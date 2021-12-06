@@ -1,0 +1,12 @@
+<div>
+    {{#each dataArtists }}
+    {{!-- 'dataArtists' is from line 40 at app.js --}}
+    
+    <h1>{{ name }}</h1>
+
+    <img src="{{ images.0.url }}" />
+    {{!-- image URL taken from here: http://jsfiddle.net/JMPerez/0u0v7e1b/ --}}
+
+    <a href ="/albums/{{ id }}" target="_blank">View albums</a>
+    {{/each}}
+</div>

@@ -1,0 +1,17 @@
+<div>
+{{!-- continue here 
+
+Create the View tracks link on the albums page. This link should take you to a page with a list of all of the tracks on a particular album.
+
+Hint: The link to the tracks page should have each album's id in it.
+Note: ⚡ Check out the .getAlbumTracks() method in the spotify-web-api-node documentation.
+
+A track object comes with a preview_url, which is the source for a 30-second preview of a particular song. You can plug this into an HTML audio tag, and it will play the preview.
+
+--}}
+    {{#each dataAlbums }}
+    <h1>{{ name }}</h1>
+    <img src="{{ images.0.url }}" />
+    <a href ="/tracks/{{ id }}" target="_blank">View tracks</a>
+    {{/each}}
+</div>
