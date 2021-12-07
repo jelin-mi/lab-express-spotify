@@ -49,16 +49,29 @@ app.get('/albums/:artistId', (req, res, next) => {
     .getArtistAlbums(req.params.artistId)
     .then(data => {
         res.render('albums', { dataAlbums: data.body.items });
+        /* data.body.items found here: https://developer.spotify.com/documentation/web-api/reference/#/operations/search */
     })
     .catch(err => console.log('The error while searching albums occurred: ', err));
   });
 
-app.get('/tracks', (req, res) => {
+app.get('/tracks/:albumId', (req, res) => {
     spotifyApi
-    .getAlbumTracks()       // continue here
-    .then()
+    .getAlbumTracks(req.params.albumId)
+    .then(data => {
+      res.render('tracks', { dataTracks: data.body.items } );
+      /* data.body.items found here: https://developer.spotify.com/documentation/web-api/reference/#/operations/search */
+    })
     .catch(err => console.log('The error while searching tracks occurred: ', err));
 });  
   
 app.listen(3000, () => console.log('My Spotify project running on port 3000 🎧 🥁 🎸 🔊'));
 
+
+/* https://api.spotify.com/v1/search
+
+{
+  error: {
+  status: 401,
+  message: "No token provided"
+  }
+  } */
