@@ -33,7 +33,7 @@ app.get('/', (req, res) => {
 app.get('/artist-search', (req, res) => {
     spotifyApi
      .searchArtists(req.query.artist)           
-     // On each input, what we put in the name field will be each of the keys on the req.query object, and what’s on the input will be the value.
+     // On each input, what we put in the name field ('artist') will be each of the keys on the req.query object, and what’s on the input will be the value.
      .then(data => {
       console.log('The received data from the API: ', data.body);
         // ----> 'HERE WHAT WE WANT TO DO AFTER RECEIVING THE DATA FROM THE API'
@@ -49,7 +49,7 @@ app.get('/albums/:artistId', (req, res, next) => {
     .getArtistAlbums(req.params.artistId)
     .then(data => {
         res.render('albums', { dataAlbums: data.body.items });
-        /* data.body.items found here: https://developer.spotify.com/documentation/web-api/reference/#/operations/search */
+        /* https://developer.spotify.com/documentation/web-api/reference/#/operations/search */
     })
     .catch(err => console.log('The error while searching albums occurred: ', err));
   });
@@ -58,8 +58,7 @@ app.get('/tracks/:albumId', (req, res) => {
     spotifyApi
     .getAlbumTracks(req.params.albumId)
     .then(data => {
-      res.render('tracks', { dataTracks: data.body.items } );
-      /* data.body.items found here: https://developer.spotify.com/documentation/web-api/reference/#/operations/search */
+      res.render('tracks', { dataTracks: data.body.items });
     })
     .catch(err => console.log('The error while searching tracks occurred: ', err));
 });  
@@ -67,11 +66,12 @@ app.get('/tracks/:albumId', (req, res) => {
 app.listen(3000, () => console.log('My Spotify project running on port 3000 🎧 🥁 🎸 🔊'));
 
 
-/* https://api.spotify.com/v1/search
-
+/* 
+https://api.spotify.com/v1/search
 {
   error: {
   status: 401,
   message: "No token provided"
   }
-  } */
+}
+*/
