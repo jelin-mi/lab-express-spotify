@@ -1,6 +1,8 @@
-<div>
+<div class="tracks">
     {{#each dataTracks }}
-    <h1>{{ name }}</h1>
-    <audio controls src="{{ preview_url }}"></audio>
+    <div class="track">
+        <h2>{{ name }}</h2>
+        <audio controls src="{{ preview_url }}"></audio>
+    </div>
     {{/each}}
 </div>
