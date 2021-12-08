@@ -1,9 +1,13 @@
 <div class="artist-search">
     {{#each dataAlbums }}
     <div class="artist">
-        <h1>{{ name }}</h1>
-        <img src="{{ images.0.url }}" />
-        <a href ="/tracks/{{ id }}" target="_blank">View tracks</a>
+        <div class="image">
+            <img src="{{ images.0.url }}" />        
+        </div>
+        <div class="text">
+            <h1>{{ name }}</h1>
+            <a href ="/tracks/{{ id }}" target="_blank">View tracks</a>
+        </div>
     </div>
     {{/each}}
 </div>
